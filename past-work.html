@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work — Johnathan Chang</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,6 +16,7 @@
       --accent: #9CAF88;
       --stat-bg: #111111;
       --stat-border: rgba(255,255,255,0.08);
+      --contact-color: #FFFFFF;
     }
     body.light {
       --bg: #FFFFFF;
@@ -22,13 +24,14 @@
       --text: #000000;
       --stat-bg: #f0f0f0;
       --stat-border: rgba(0,0,0,0.1);
+      --contact-color: #000000;
     }
 
     body { background: var(--bg); color: var(--text); font-family: 'Lora', serif; padding: 80px 48px; transition: background 0.2s ease; }
     .container { max-width: 680px; margin: 0 auto; }
-    .back { font-size: 12px; color: #cbcbcb; text-decoration: none; letter-spacing: 0.08em; display: inline-block; margin-bottom: 64px; transition: color 0.15s; }
+    .back { font-size: 12px; color: var(--heading); text-decoration: none; letter-spacing: 0.08em; display: inline-block; margin-bottom: 64px; transition: color 0.2s ease; }
     .back:hover { opacity: 1; }
-    .label { font-size: 11px; letter-spacing: 0.15em; color: var(--text); text-transform: uppercase; margin-bottom: 48px; transition: color 0.2s ease; }
+    .label { font-size: 11px; letter-spacing: 0.15em; color: var(--heading); text-transform: uppercase; margin-bottom: 48px; transition: color 0.2s ease; }
     .card { border-left: 2px solid var(--accent); padding-left: 24px; margin-bottom: 56px; }
     .card h2 { font-family: 'Lora', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--heading); margin-bottom: 6px; transition: color 0.2s ease; }
     .card .sub { font-size: 12px; color: var(--text); margin-bottom: 16px; transition: color 0.2s ease; }
@@ -41,6 +44,12 @@
     .card-logo { width: 40px; height: 40px; object-fit: contain; margin-bottom: 12px; border-radius: 6px; display: block; }
     .bullets li { font-size: 13px; color: var(--text); line-height: 1.8; padding-left: 20px; position: relative; transition: color 0.2s ease; }
     .bullets li::before { content: "‣"; position: absolute; left: 0; color: var(--accent); }
+    .card h2 a { color: inherit; text-decoration: none; }
+    .card h2 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .card .sub a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: currentColor; opacity: 0.7; transition: color 0.2s ease; }
+    .card .sub a:hover { opacity: 1; }
+    .card .desc a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: currentColor; opacity: 0.7; transition: color 0.2s ease; }
+    .card .desc a:hover { opacity: 1; }
 
     /* CONTACT */
     .contact-row {
@@ -53,10 +62,10 @@
     .contact-row a {
       font-family: 'Lora', serif;
       font-size: 13px;
-      color: var(--text);
+      color: var(--contact-color);
       text-decoration: none;
       opacity: 0.6;
-      transition: opacity 0.15s;
+      transition: opacity 0.15s, color 0.2s ease;
     }
     .contact-row a:hover { opacity: 1; }
     .theme-toggle {
@@ -64,16 +73,16 @@
       border: none;
       cursor: pointer;
       font-size: 16px;
-      color: var(--text);
+      color: var(--contact-color);
       padding: 0;
       line-height: 1;
       opacity: 0.6;
-      transition: opacity 0.15s;
+      transition: opacity 0.15s, color 0.2s ease;
     }
     .theme-toggle:hover { opacity: 1; }
   </style>
 </head>
-<body>
+<body class="light">
   <div class="container">
     <a href="index.html" class="back">← back</a>
     <p class="label">Work</p>
@@ -81,7 +90,7 @@
     <div class="card">
       <img src="clip-studio-logo copy.png" alt="Clip Studio logo" class="card-logo" />
       <h2>Clip Studio</h2>
-      <p class="sub">Founder (Partnered with Mosaic AI Labs, YC W25)</p>
+      <p class="sub">Founder (Partnered with <a href="https://mosaic.so" target="_blank">Mosaic AI Labs</a>, YC W25)</p>
       <p class="desc">AI-powered SaaS that automatically transforms long-form YouTube videos into short-form clips for TikTok, Reels, and Shorts.</p>
       <div class="stats">
         <div class="stat"><span class="stat-value">$3.3K</span><span class="stat-label">MRR</span></div>
@@ -102,7 +111,7 @@
       <img src="tigermasters.jpeg" alt="Tiger Masters logo" class="card-logo" />
       <h2>Tiger Masters</h2>
       <p class="sub">Growth & GTM Advisor</p>
-      <p class="desc">AI-powered K-12 tutoring platform. Supporting growth strategy and go-to-market for the GTA market.</p>
+      <p class="desc"><a href="https://tigermasters.com" target="_blank">AI-powered K-12 tutoring platform</a>. Supporting growth strategy and go-to-market for the GTA market.</p>
     </div>
 
     <div class="contact-row">

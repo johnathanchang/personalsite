@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Johnathan Chang</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -167,25 +168,29 @@
     .contact-row a {
       font-family: 'Lora', serif;
       font-size: 13px;
-      color: var(--muted);
+      color: #FFFFFF;
       text-decoration: none;
       transition: color 0.15s;
     }
 
     .contact-row a:hover { color: var(--text); }
 
+    body.light .contact-row a { color: var(--muted); }
+
     .theme-toggle {
       background: none;
       border: none;
       cursor: pointer;
       font-size: 16px;
-      color: var(--muted);
+      color: #FFFFFF;
       padding: 0;
       line-height: 1;
       transition: color 0.15s;
     }
 
     .theme-toggle:hover { color: var(--text); }
+
+    body.light .theme-toggle { color: var(--muted); }
 
     .jerseys-row {
       display: flex;
@@ -214,6 +219,9 @@
       mix-blend-mode: screen;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
       border-radius: 4px;
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
     }
 
     body.light .jerseys-row,
@@ -238,10 +246,10 @@
 
     .jersey-btn span {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
+      font-size: 13px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #FFFFFF;
       transition: color 0.15s ease;
     }
 
@@ -249,9 +257,11 @@
       color: var(--text);
     }
 
+    body.light .jersey-btn span { color: var(--muted); }
+
   </style>
 </head>
-<body>
+<body class="light">
 <section id="hero">
     <div class="hover-slide">
       <h1>Johnathan Chang</h1>
@@ -272,15 +282,15 @@
 
     <div class="jerseys-row">
       <a href="past-work.html" class="jersey-btn">
-        <img src="russ.png" alt="Russell Westbrook OKC jersey" />
+        <img src="russ.png" alt="Russell Westbrook OKC jersey" draggable="false" />
         <span>Work</span>
       </a>
       <a href="projects.html" class="jersey-btn">
-        <img src="vince.png" alt="Vince Carter Raptors jersey" />
+        <img src="vince.png" alt="Vince Carter Raptors jersey" draggable="false" />
         <span>Projects</span>
       </a>
       <a href="writing.html" class="jersey-btn">
-        <img src="ja.png" alt="Ja Morant jersey" />
+        <img src="ja.png" alt="Ja Morant jersey" draggable="false" />
         <span>Writing</span>
       </a>
     </div>
