@@ -30,6 +30,8 @@
     .card h2 { font-family: 'Lora', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 6px; transition: color 0.2s ease; }
     .card .sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; transition: color 0.2s ease; }
     .card .desc { font-size: 14px; color: var(--muted); line-height: 1.8; transition: color 0.2s ease; }
+    .card .desc a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.15s; }
+    .card .desc a:hover { opacity: 0.7; }
 
     /* CONTACT */
     .contact-row {
@@ -65,9 +67,15 @@
     <a href="index.html" class="back">← back</a>
     <p class="label">Projects</p>
     <div class="card">
+      <h2>xOutput</h2>
+      <p class="sub">2026 — Next.js, Supabase, Stripe, Vercel</p>
+      <p class="desc"><a href="https://github.com/johnathanchang/xOutput" target="_blank">A fintech app built on behavioral economics.</a> Users deposit real money, commit to a morning check-in with a 5-minute timer, and winners automatically split the stakes of those who fail.</p>
+    </div>
+
+    <div class="card">
       <h2>Personal Site Redesign</h2>
       <p class="sub">2026 — HTML, CSS</p>
-      <p class="desc">Rebuilding my personal site from scratch. Blank canvas, matte black, built section by section using Claude Code.</p>
+      <p class="desc"><a href="https://github.com/johnathanchang/personalsite" target="_blank">Made my personal site from scratch.</a> First project ever and my first step into frontend development.</p>
     </div>
 
     <div class="contact-row">
