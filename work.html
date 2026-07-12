@@ -32,7 +32,8 @@
     .back { font-size: 12px; color: var(--heading); text-decoration: none; letter-spacing: 0.08em; display: inline-block; margin-bottom: 64px; transition: color 0.2s ease; }
     .back:hover { opacity: 1; }
     .label { font-size: 11px; letter-spacing: 0.15em; color: var(--heading); text-transform: uppercase; margin-bottom: 48px; transition: color 0.2s ease; }
-    .card { border-left: 2px solid var(--accent); padding-left: 24px; margin-bottom: 56px; }
+    .card { border-left: 2px solid var(--accent); padding-left: 24px; margin-bottom: 56px; transition: transform 0.2s ease; }
+    .card:hover { transform: translateX(10px); }
     .card h2 { font-family: 'Lora', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--heading); margin-bottom: 6px; transition: color 0.2s ease; }
     .card .sub { font-size: 12px; color: var(--text); margin-bottom: 16px; transition: color 0.2s ease; }
     .card .desc { font-size: 14px; color: var(--text); line-height: 1.8; margin-bottom: 20px; transition: color 0.2s ease; }
@@ -88,19 +89,43 @@
     <p class="label">Work</p>
 
     <div class="card">
+      <img src="KICKCLIPPERDARK.png" alt="Kick Clipper logo" class="card-logo" />
+      <h2>Kick Clipper</h2>
+      <p class="sub">Founder</p>
+      <p class="desc">Building Kick Clipper, an AI video editing platform that helps Kick creators turn livestreams into viral-ready short-form content in minutes.</p>
+      <ul class="bullets">
+        <li>Tech: Next.js, React, TypeScript, Supabase, Vercel, Stripe, FFmpeg, Tailwind CSS</li>
+        <li>Built with: Codex, Claude Code, and Conductor for running parallel agents</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <img src="Instagramlogo.jpg" alt="Instagram logo" class="card-logo" />
+      <h2>Instagram</h2>
+      <p class="sub">Content Creator</p>
+      <p class="desc">Growing personal Instagram account through organic content strategy, creator marketing, and working with other creators/businesses.</p>
+      <ul class="bullets">
+        <li>Generated 4.3M+ organic impressions</li>
+        <li>Scaled to 9K+ followers in under 5 months</li>
+      </ul>
+    </div>
+
+    <p class="label">Past Work</p>
+
+    <div class="card">
       <img src="clip-studio-logo copy.png" alt="Clip Studio logo" class="card-logo" />
       <h2>Clip Studio</h2>
       <p class="sub">Founder (Partnered with <a href="https://mosaic.so" target="_blank">Mosaic AI Labs</a>, YC W25)</p>
       <p class="desc">AI-powered SaaS that automatically transforms long-form YouTube videos into short-form clips for TikTok, Reels, and Shorts.</p>
       <div class="stats">
         <div class="stat"><span class="stat-value">$3.3K</span><span class="stat-label">MRR</span></div>
-        <div class="stat"><span class="stat-value">3.5M+</span><span class="stat-label">impressions</span></div>
-        <div class="stat"><span class="stat-value">8K+</span><span class="stat-label">followers</span></div>
+        <div class="stat"><span class="stat-value">4.3M+</span><span class="stat-label">impressions</span></div>
+        <div class="stat"><span class="stat-value">9K+</span><span class="stat-label">followers</span></div>
         <div class="stat"><span class="stat-value">500+</span><span class="stat-label">Discord</span></div>
       </div>
       <ul class="bullets">
         <li>Scaled from $0 to $3.3K MRR in under 4 months</li>
-        <li>Generated 3.5M+ organic impressions and 8K+ followers</li>
+        <li>Generated 4.3M+ organic impressions and 9K+ followers</li>
         <li>Built a 500+ member Discord community</li>
         <li>Rebuilt clipstudio.pro and launched automated affiliates system</li>
         <li>Onboarded customers using a 1:1 DTC model</li>

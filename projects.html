@@ -26,12 +26,14 @@
     .back { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; display: inline-block; margin-bottom: 64px; transition: color 0.15s; }
     .back:hover { color: var(--text); }
     .label { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 48px; transition: color 0.2s ease; }
-    .card { border-left: 2px solid var(--accent); padding-left: 24px; margin-bottom: 56px; }
+    .card { border-left: 2px solid var(--accent); padding-left: 24px; margin-bottom: 56px; transition: transform 0.2s ease; }
+    .card:hover { transform: translateX(10px); }
     .card h2 { font-family: 'Lora', serif; font-style: italic; font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 6px; transition: color 0.2s ease; }
     .card .sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; transition: color 0.2s ease; }
     .card .desc { font-size: 14px; color: var(--muted); line-height: 1.8; transition: color 0.2s ease; }
     .card .desc a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.15s; }
     .card .desc a:hover { opacity: 0.7; }
+    .card-logo { width: 40px; height: 40px; object-fit: contain; margin-bottom: 12px; border-radius: 6px; display: block; }
 
     /* CONTACT */
     .contact-row {
@@ -66,6 +68,13 @@
   <div class="container">
     <a href="index.html" class="back">← back</a>
     <p class="label">Projects</p>
+    <div class="card">
+      <img src="KICKCLIPPERDARK.png" alt="Kick Clipper logo" class="card-logo" />
+      <h2>Kick Clipper</h2>
+      <p class="sub">2026 — Next.js, Supabase, Vercel, Stripe, FFmpeg</p>
+      <p class="desc"><a href="https://github.com/johnathanchang/kick-clipper-live" target="_blank">Kick Clipper transforms hours of Kick streams into viral-ready short-form content with AI.</a> Learning how to validate ideas, build products, and ship them quickly.</p>
+    </div>
+
     <div class="card">
       <h2>xOutput</h2>
       <p class="sub">2026 — Next.js, Supabase, Stripe, Vercel</p>
