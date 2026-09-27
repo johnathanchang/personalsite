@@ -5,7 +5,7 @@ My personal website — hand-written HTML and CSS, no frameworks, no build step.
 ## Pages
 
 - **`index.html`** — Home: bio, what I'm working on, and jersey-button navigation (OKC / Raptors / Grizzlies) to the three sections
-- **`work.html`** — Current work (Kick Clipper, Instagram) and past work (Clip Studio, Tiger Masters)
+- **`work.html`** — Current work (LaunchPoint) and past work (Clip Studio, Instagram)
 - **`projects.html`** — Side projects with links to their GitHub repos
 - **`writing.html`** — Essays, starting with [From Pre-Med to Growth and Product Engineering](pre-med-to-growth.html)
 
