@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,12 +15,16 @@
       --bg: #000000;
       --text: #f0ede6;
       --muted: #7a7870;
+      --faint: rgba(255,255,255,0.25);
     }
     body.light {
       --bg: #FFFFFF;
       --text: #000000;
       --muted: #555555;
+      --faint: rgba(0,0,0,0.2);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
@@ -29,18 +33,80 @@
       transition: background 0.2s ease;
     }
     #hero {
-      padding: 120px 48px;
+      padding: 50px 48px 0;
       max-width: 680px;
       margin: 0 auto;
     }
+    .name-row {
+      position: relative;
+      max-width: 514px; /* ball lines up with where the 2nd bullet's first line ends ("creator") */
+      margin-bottom: 32px;
+    }
+
     #hero h1 {
       font-family: 'Lora', serif;
       font-size: 32px;
       font-weight: 400;
       color: var(--text);
-      margin-bottom: 32px;
+      padding-right: 40px; /* keeps the name clear of the ball */
       transition: color 0.2s ease;
     }
+
+    /* BASKETBALL DRIBBLE */
+    .dribble {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 26px;
+      height: 58px;
+    }
+
+    .ball {
+      position: absolute;
+      left: 1px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      transform-origin: 50% 100%;
+      animation: dribble 0.9s infinite;
+    }
+
+    /* Ball takes the page background with seams in the text color, so it flips with the theme */
+    .ball circle { fill: var(--bg); }
+    .ball circle, .ball path { stroke: var(--text); transition: fill 0.2s ease, stroke 0.2s ease; }
+
+    .ball-shadow {
+      position: absolute;
+      left: 3px;
+      bottom: 0;
+      width: 20px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text);
+      opacity: 0.15;
+      animation: dribble-shadow 0.9s infinite;
+    }
+
+    /* Falls with gravity, squashes on the floor, springs back up */
+    @keyframes dribble {
+      0%   { transform: translateY(0); animation-timing-function: cubic-bezier(0.5, 0, 1, 1); }
+      46%  { transform: translateY(30px) scale(1, 1); }
+      52%  { transform: translateY(32px) scale(1.15, 0.85); animation-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+      58%  { transform: translateY(30px) scale(1, 1); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes dribble-shadow {
+      0%   { transform: scaleX(0.5); opacity: 0.08; animation-timing-function: cubic-bezier(0.5, 0, 1, 1); }
+      52%  { transform: scaleX(1.1); opacity: 0.3; animation-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+      100% { transform: scaleX(0.5); opacity: 0.08; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ball, .ball-shadow { animation: none; }
+      .ball { top: 32px; }
+    }
+
     #hero p {
       font-family: 'Lora', serif;
       font-size: 16px;
@@ -77,14 +143,17 @@
 
     .hero-list a {
       color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--muted);
-      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      font-weight: 500;
+      text-decoration: none;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0% 1px;
+      transition: background-size 0.3s ease;
     }
 
     .hero-list a:hover {
-      text-decoration-color: var(--text);
+      background-size: 100% 1px;
     }
 
     .hover-slide {
@@ -97,72 +166,13 @@
       transform: translateX(10px);
     }
 
-    /* JERSEYS */
-    .jerseys {
-      display: flex;
-      gap: 48px;
-      align-items: flex-end;
-      justify-content: center;
-      margin-top: 48px;
-    }
-
-    .jersey-wrap {
-      position: relative;
-      width: 100px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
-
-    .jersey-wrap:hover { transform: translateY(-6px); }
-
-    .jersey-body {
-      width: 100px;
-      height: 120px;
-      clip-path: polygon(20% 8%, 80% 8%, 100% 20%, 100% 100%, 0% 100%, 0% 20%);
-      position: relative;
-    }
-
-    .jersey-stripe {
-      position: absolute;
-      width: 100%;
-      height: 18px;
-      top: 28px;
-      clip-path: polygon(20% 0%, 80% 0%, 100% 30%, 100% 100%, 0% 100%, 0% 30%);
-    }
-
-    .jersey-number {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -20%);
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    .jersey-label {
-      display: block;
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 8px;
-      white-space: nowrap;
-      text-align: center;
-      transition: color 0.2s ease;
-    }
-
     /* CONTACT */
     .contact-row {
       display: flex;
       gap: 32px;
       align-items: center;
       justify-content: center;
-      margin-top: 96px;
+      margin-top: 64px;
     }
 
     .contact-row a {
@@ -192,118 +202,147 @@
 
     body.light .theme-toggle { color: var(--muted); }
 
-    .jerseys-row {
-      display: flex;
-      gap: 40px;
-      align-items: flex-end;
-      justify-content: center;
-      margin-top: 56px;
-      background: transparent;
+    /* SECTIONS (Work, Writing) */
+    .section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 48px 0;
     }
 
-    .jersey-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      cursor: pointer;
-      background: transparent;
+    .section h2 {
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 16px;
+      transition: color 0.2s ease;
     }
 
-    .jersey-btn img {
-      width: 200px;
-      height: auto;
-      display: block;
-      transition: transform 0.2s ease;
-      mix-blend-mode: screen;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+    .section-list {
+      list-style: none;
+    }
+
+    .section-list li {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .section-list li:hover {
+      transform: translateX(10px);
+    }
+
+    .section-list li::before {
+      content: "‣";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    .work-logo {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
       border-radius: 4px;
-      -webkit-user-drag: none;
-      user-select: none;
-      pointer-events: none;
+      vertical-align: -3px;
+      margin: 0 4px 0 6px;
     }
 
-    body.light .jerseys-row,
-    body.light .jersey-btn,
-    body.light .jersey-btn:hover,
-    body.light .jersey-btn:focus,
-    body.light .jersey-btn:active {
-      background: transparent;
-      box-shadow: none;
-      -webkit-tap-highlight-color: transparent;
+    /* Company name: faint underline always, full-color underline grows in on hover (links only) */
+    .company {
+      color: var(--text);
+      font-weight: 500;
+      text-decoration: none;
+      background-image:
+        linear-gradient(var(--text), var(--text)),
+        linear-gradient(var(--faint), var(--faint));
+      background-repeat: no-repeat;
+      background-position: 0 100%, 0 100%;
+      background-size: 0% 1px, 100% 1px;
+      padding-bottom: 2px;
+      transition: background-size 0.3s ease;
     }
 
-    body.light .jersey-btn img {
-      mix-blend-mode: normal;
-      filter: none;
-      background: transparent;
+    a.company:hover {
+      background-size: 100% 1px, 100% 1px;
     }
 
-    .jersey-btn:hover img {
-      transform: translateY(-8px);
+    .section-list .date {
+      margin-left: 12px;
     }
 
-    .jersey-btn span {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      transition: color 0.15s ease;
-    }
-
-    .jersey-btn:hover span {
+    #work .section-list em {
       color: var(--text);
     }
 
-    body.light .jersey-btn span { color: var(--muted); }
+    footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+    }
+
+    @media (max-width: 480px) {
+      #hero, .section, footer { padding-left: 24px; padding-right: 24px; }
+      .contact-row { gap: 20px; flex-wrap: wrap; }
+    }
 
   </style>
 </head>
-<body class="light">
+<body>
 <section id="hero">
-    <div class="hover-slide">
+    <div class="name-row">
       <h1>Johnathan Chang</h1>
+      <div class="dribble" aria-hidden="true">
+        <svg class="ball" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="11" stroke-width="1.2"/>
+          <path d="M12 1v22M1 12h22M4.2 4.2c3.8 3.3 3.8 12.3 0 15.6M19.8 4.2c-3.8 3.3-3.8 12.3 0 15.6" fill="none" stroke-width="1.2"/>
+        </svg>
+        <span class="ball-shadow"></span>
+      </div>
     </div>
 
     <div class="hover-slide" style="margin-top:32px;">
       <p><em>What I'm working on:</em></p>
       <ul class="hero-list">
-        <li>Passionate about growth, startups, and crypto.</li>
-        <li>Currently building @ LaunchPoint, working on growth and creator sourcing.</li>
+        <li>Passionate about growth, startups, and <a data-href="https://substack.com/@johnathanjp7" target="_blank">crypto</a>.</li>
+        <li>Currently building @ <a data-href="https://www.launchpointhq.com" target="_blank">Launchpoint</a>, working on growth and creator sourcing.</li>
         <li>Working to become a high-end growth marketer who can bring exceptional products to market.</li>
       </ul>
     </div>
+  </section>
 
-    <div class="hover-slide" style="margin-top:16px;">
-      <p>I spend my free time playing basketball, reading, and spending time with my loved ones. You can take a look at my work below:</p>
-    </div>
+  <section id="work" class="section">
+    <h2>Work</h2>
+    <ul class="section-list">
+      <li><em>Growth</em> <img src="launchpoint.jpeg.jpg" alt="" class="work-logo" /><a data-href="https://www.launchpointhq.com" target="_blank" class="company">Launchpoint</a></li>
+      <li><em>Founder</em> <img src="clip-studio-logo copy.png" alt="" class="work-logo" /><span class="company">Clip Studio</span></li>
+      <li><em>Growth</em> <img src="Instagramlogo.jpg" alt="" class="work-logo" /><a data-href="https://www.instagram.com/johnathann.777" target="_blank" class="company">Instagram</a></li>
+    </ul>
+  </section>
 
-    <div class="jerseys-row">
-      <a href="work.html" class="jersey-btn">
-        <img src="russ.png" alt="Russell Westbrook OKC jersey" draggable="false" />
-        <span>Work</span>
-      </a>
-      <a href="projects.html" class="jersey-btn">
-        <img src="vince.png" alt="Vince Carter Raptors jersey" draggable="false" />
-        <span>Projects</span>
-      </a>
-      <a href="writing.html" class="jersey-btn">
-        <img src="ja.png" alt="Ja Morant jersey" draggable="false" />
-        <span>Writing</span>
-      </a>
-    </div>
+  <section id="writing" class="section">
+    <h2>Writing</h2>
+    <ul class="section-list">
+      <li><a data-href="pre-med-to-growth.html" class="company">From Pre-Med to Growth and Product Engineering</a><em class="date">June 2026</em></li>
+    </ul>
+  </section>
 
+  <footer>
     <div class="contact-row">
-      <a href="https://www.linkedin.com/in/johnathan-chang7/" target="_blank">LinkedIn</a>
-      <a href="https://x.com/johnathanjp7" target="_blank">X</a>
-      <a href="https://github.com/johnathanchang" target="_blank">GitHub</a>
-      <a href="https://substack.com/@johnathanjp7" target="_blank">Substack</a>
-      <a href="mailto:changj68@mcmaster.ca">Email</a>
+      <a data-href="https://www.linkedin.com/in/johnathan-chang7/" target="_blank">LinkedIn</a>
+      <a data-href="https://x.com/johnathanjp7" target="_blank">X</a>
+      <a data-href="https://github.com/johnathanchang" target="_blank">GitHub</a>
+      <a data-href="https://substack.com/@johnathanjp7" target="_blank">Substack</a>
+      <a data-href="mailto:changj68@mcmaster.ca">Email</a>
       <button class="theme-toggle" onclick="document.body.classList.toggle('light')" aria-label="Toggle light mode">☀︎</button>
     </div>
+  </footer>
 
-  </section>
+  <script src="links.js"></script>
 </body>
 </html>

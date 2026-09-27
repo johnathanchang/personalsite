@@ -4,15 +4,13 @@ My personal website — hand-written HTML and CSS, no frameworks, no build step.
 
 ## Pages
 
-- **`index.html`** — Home: bio, what I'm working on, and jersey-button navigation (OKC / Raptors / Grizzlies) to the three sections
-- **`work.html`** — Current work (LaunchPoint) and past work (Clip Studio, Instagram)
-- **`projects.html`** — Side projects with links to their GitHub repos
-- **`writing.html`** — Essays, starting with [From Pre-Med to Growth and Product Engineering](pre-med-to-growth.html)
+- **`index.html`** — Home: bio, what I'm working on, and the Work and Writing sections
+- **`pre-med-to-growth.html`** — Essay: From Pre-Med to Growth and Product Engineering (linked from the Writing section)
 
 ## Design
 
 - Serif typography ([Lora](https://fonts.google.com/specimen/Lora)) with [DM Mono](https://fonts.google.com/specimen/DM+Mono) accents
-- Light mode by default with a dark-mode toggle (☀︎) on every page
+- Dark mode by default with a light-mode toggle (☀︎) on every page
 - Hover slide effect on cards and entries
 - Each page is fully self-contained — styles live in a `<style>` block per page
 
